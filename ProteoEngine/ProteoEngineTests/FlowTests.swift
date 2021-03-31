@@ -18,7 +18,7 @@ class FlowTests: XCTestCase {
         
         flow.start()
         
-        XCTAssertTrue(router.exercices.isEmpty)
+        XCTAssertTrue(router.routedExercices.isEmpty)
         
     }
 
@@ -28,7 +28,7 @@ class FlowTests: XCTestCase {
         
         flow.start()
         
-        XCTAssertEqual(router.exercices, ["E1"])
+        XCTAssertEqual(router.routedExercices, ["E1"])
     }
     
     func test_startTwice_withTwoExercices_RouteToFirstExerciceTwice() {
@@ -38,7 +38,7 @@ class FlowTests: XCTestCase {
         flow.start()
         flow.start()
         
-        XCTAssertEqual(router.exercices, ["E1", "E1"])
+        XCTAssertEqual(router.routedExercices, ["E1", "E1"])
     }
 
     
@@ -46,10 +46,10 @@ class FlowTests: XCTestCase {
 
 class RouterSpy: Router {
     
-    private(set) var exercices = [String]()
+    private(set) var routedExercices = [String]()
     
     func routeToExercice(exercice: String) {
-        exercices.append(exercice)
+        routedExercices.append(exercice)
     }
     
 }
