@@ -8,7 +8,7 @@
 import Foundation
 
 protocol Router {
-    func routeToExercice(exercice: String)
+    func routeToExercice(exercice: String, exerciceCallback: @escaping ([Int]) -> Void)
 }
 
 final class Flow {
@@ -23,7 +23,12 @@ final class Flow {
     
     func start() {
         if let firstExercice = exercices.first {
-            router.routeToExercice(exercice: firstExercice)
+            router.routeToExercice(exercice: firstExercice) { [unowned self] _ in
+                let exerciceIndex = exercices.firstIndex(of: firstExercice)!
+                let nextExercice = exercices[exerciceIndex+1]
+                router.routeToExercice(exercice: nextExercice, exerciceCallback: { _ in
+                })
+            }
         }
     }
     

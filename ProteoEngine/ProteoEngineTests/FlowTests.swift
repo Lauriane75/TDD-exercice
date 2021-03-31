@@ -40,6 +40,17 @@ class FlowTests: XCTestCase {
         
         XCTAssertEqual(router.routedExercices, ["E1", "E1"])
     }
+    
+    func test_start_withTwoExercices_When_Finish_First_Exercice_RouteToSecond() {
+        
+        let flow = Flow(exercices: ["E1", "E2"], router: router)
+        
+        flow.start()
+        
+        router.exerciceCallback([1])
+        
+        XCTAssertEqual(router.routedExercices, ["E1", "E2"])
+    }
 
     
 }
@@ -47,9 +58,11 @@ class FlowTests: XCTestCase {
 class RouterSpy: Router {
     
     private(set) var routedExercices = [String]()
+    var exerciceCallback: ([Int]) -> Void = { _ in }
     
-    func routeToExercice(exercice: String) {
+    func routeToExercice(exercice: String, exerciceCallback: @escaping ([Int]) -> Void) {
         routedExercices.append(exercice)
+        self.exerciceCallback = exerciceCallback
     }
     
 }
