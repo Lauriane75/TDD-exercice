@@ -9,9 +9,10 @@ import XCTest
 @testable import ProteoEngine
 
 class FlowTests: XCTestCase {
-        
+    
+    let router = RouterSpy()
+    
     func test_start_withoutExercice_doesNotRouteExercice() {
-        let router = RouterSpy()
         
         let flow = Flow(exercices: [], router: router)
         
@@ -34,10 +35,10 @@ class FlowTests: XCTestCase {
     
 }
 
-private class RouterSpy: Router {
+class RouterSpy: Router {
     
     var routeToExerciceCallCount = 0
-
+    
     func routeToExercice() {
         routeToExerciceCallCount += 1
     }
