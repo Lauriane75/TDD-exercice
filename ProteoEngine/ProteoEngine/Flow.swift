@@ -29,7 +29,8 @@ final class Flow {
     }
     
     private func nextCallback(exercice: String) -> ([Int]) -> Void {
-        return { [unowned self] _ in routeNext(exercice: exercice) }
+        // When Flow is kill we don't want to call routeNext(exercice: String)
+        return { [weak self] _ in self?.routeNext(exercice: exercice) }
     }
     
     private func routeNext(exercice: String) {
