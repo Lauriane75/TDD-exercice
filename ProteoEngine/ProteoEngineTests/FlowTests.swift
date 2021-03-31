@@ -30,6 +30,16 @@ class FlowTests: XCTestCase {
         
         XCTAssertEqual(router.exercices, ["E1"])
     }
+    
+    func test_startTwice_withTwoExercices_RouteToFirstExerciceTwice() {
+        
+        let flow = Flow(exercices: ["E1", "E2"], router: router)
+        
+        flow.start()
+        flow.start()
+        
+        XCTAssertEqual(router.exercices, ["E1", "E1"])
+    }
 
     
 }
