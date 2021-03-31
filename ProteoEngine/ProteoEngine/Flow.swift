@@ -23,13 +23,18 @@ final class Flow {
     
     func start() {
         if let firstExercice = exercices.first {
-            router.routeToExercice(exercice: firstExercice) { [unowned self] _ in
-                
-                if let previewsExerciceIndex = exercices.firstIndex(of: firstExercice) {
-                    let nextExerciceIndex = previewsExerciceIndex+1
-                    if nextExerciceIndex < exercices.count {
-                        router.routeToExercice(exercice: exercices[nextExerciceIndex], exerciceCallback: { _ in })
-                    }
+            router.routeToExercice(exercice: firstExercice, exerciceCallback: routeNext(exercice: firstExercice))
+        }
+    }
+    
+    private func routeNext(exercice: String) -> ([Int]) -> Void {
+        return { [unowned self] _ in
+            if let currentExerciceIndex = self.exercices.firstIndex(of: exercice) {
+                let nextExerciceIndex = currentExerciceIndex+1
+                if nextExerciceIndex < self.exercices.count {
+                    // go to next exercice
+                    let nextExercice = exercices[nextExerciceIndex]
+                    router.routeToExercice(exercice: nextExercice, exerciceCallback: routeNext(exercice: nextExercice))
                 }
             }
         }
