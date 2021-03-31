@@ -14,15 +14,16 @@ class FlowTests: XCTestCase {
     
     // MARK: - Helpers
     
+    // sut = System under test = replace with the class you want to test
     private func makeSUT(exercices: [String] = []) -> Flow {
         return Flow(exercices: exercices, router: router)
     }
     
     func test_start_withoutExercice_doesNotRouteExercice() {
         
-        let flow = makeSUT()
+        let sut = makeSUT()
         
-        flow.start()
+        sut.start()
         
         XCTAssertTrue(router.routedExercices.isEmpty)
         
@@ -30,28 +31,28 @@ class FlowTests: XCTestCase {
 
     func test_start_withOneExercice_RouteToCorrectExercice() {
         
-        let flow = makeSUT(exercices: ["E1"])
+        let sut = makeSUT(exercices: ["E1"])
         
-        flow.start()
+        sut.start()
         
         XCTAssertEqual(router.routedExercices, ["E1"])
     }
     
     func test_startTwice_withTwoExercices_RouteToFirstExerciceTwice() {
         
-        let flow = makeSUT(exercices: ["E1", "E2"])
+        let sut = makeSUT(exercices: ["E1", "E2"])
         
-        flow.start()
-        flow.start()
+        sut.start()
+        sut.start()
         
         XCTAssertEqual(router.routedExercices, ["E1", "E1"])
     }
     
     func test_start_withOneExerciceAndFinishedFirstExercice_DoesNotRouteTo_NextExercice() {
         
-        let flow = makeSUT(exercices: ["E1"])
+        let sut = makeSUT(exercices: ["E1"])
         
-        flow.start()
+        sut.start()
         
         router.exerciceCallback([10])
         
@@ -60,9 +61,9 @@ class FlowTests: XCTestCase {
     
     func test_start_withThreeExercicesAndFinishedFirstAndSecondExercice_RouteToThirdExercice() {
         
-        let flow = makeSUT(exercices: ["E1", "E2", "E3"])
+        let sut = makeSUT(exercices: ["E1", "E2", "E3"])
         
-        flow.start()
+        sut.start()
         
         router.exerciceCallback([8,8,8])
         router.exerciceCallback([8,8,8])
@@ -73,10 +74,10 @@ class FlowTests: XCTestCase {
     
     func test_start_withTwoExercicesAndFinishedFirstExerciceAndDeallocateSUT_DoesNotRouteToNextExercice() {
         
-        var flow: Flow? = makeSUT(exercices:  ["E1", "E2"])
+        var sut: Flow? = makeSUT(exercices:  ["E1", "E2"])
         
-        flow?.start()
-        flow = nil
+        sut?.start()
+        sut = nil
         
         router.exerciceCallback([8,8,8])
         
