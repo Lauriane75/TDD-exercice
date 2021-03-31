@@ -24,10 +24,13 @@ final class Flow {
     func start() {
         if let firstExercice = exercices.first {
             router.routeToExercice(exercice: firstExercice) { [unowned self] _ in
-                let exerciceIndex = exercices.firstIndex(of: firstExercice)!
-                let nextExercice = exercices[exerciceIndex+1]
-                router.routeToExercice(exercice: nextExercice, exerciceCallback: { _ in
-                })
+                
+                if let previewsExerciceIndex = exercices.firstIndex(of: firstExercice) {
+                    let nextExerciceIndex = previewsExerciceIndex+1
+                    if nextExerciceIndex < exercices.count {
+                        router.routeToExercice(exercice: exercices[nextExerciceIndex], exerciceCallback: { _ in })
+                    }
+                }
             }
         }
     }

@@ -51,7 +51,17 @@ class FlowTests: XCTestCase {
         
         XCTAssertEqual(router.routedExercices, ["E1", "E2"])
     }
-
+    
+    func test_start_withOneExerciceAndFinishedFirstExercice_DoesNotRouteTo_NextExercice() {
+        
+        let flow = Flow(exercices: ["E1"], router: router)
+        
+        flow.start()
+        
+        router.exerciceCallback([10])
+        
+        XCTAssertEqual(router.routedExercices, ["E1"])
+    }
     
 }
 
