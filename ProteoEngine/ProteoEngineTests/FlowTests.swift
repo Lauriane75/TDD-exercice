@@ -12,9 +12,15 @@ class FlowTests: XCTestCase {
     
     let router = RouterSpy()
     
+    // MARK: - Helpers
+    
+    private func makeSUT(exercices: [String] = []) -> Flow {
+        return Flow(exercices: exercices, router: router)
+    }
+    
     func test_start_withoutExercice_doesNotRouteExercice() {
         
-        let flow = Flow(exercices: [], router: router)
+        let flow = makeSUT()
         
         flow.start()
         
@@ -24,7 +30,7 @@ class FlowTests: XCTestCase {
 
     func test_start_withOneExercice_RouteToCorrectExercice() {
         
-        let flow = Flow(exercices: ["E1"], router: router)
+        let flow = makeSUT(exercices: ["E1"])
         
         flow.start()
         
@@ -33,7 +39,7 @@ class FlowTests: XCTestCase {
     
     func test_startTwice_withTwoExercices_RouteToFirstExerciceTwice() {
         
-        let flow = Flow(exercices: ["E1", "E2"], router: router)
+        let flow = makeSUT(exercices: ["E1", "E2"])
         
         flow.start()
         flow.start()
@@ -43,7 +49,7 @@ class FlowTests: XCTestCase {
     
     func test_start_withOneExerciceAndFinishedFirstExercice_DoesNotRouteTo_NextExercice() {
         
-        let flow = Flow(exercices: ["E1"], router: router)
+        let flow = makeSUT(exercices: ["E1"])
         
         flow.start()
         
@@ -54,7 +60,7 @@ class FlowTests: XCTestCase {
     
     func test_start_withThreeExercicesAndFinishedFirstAndSecondExercice_RouteToThirdExercice() {
         
-        let flow = Flow(exercices: ["E1", "E2", "E3"], router: router)
+        let flow = makeSUT(exercices: ["E1", "E2", "E3"])
         
         flow.start()
         
@@ -67,7 +73,7 @@ class FlowTests: XCTestCase {
     
     func test_start_withTwoExercicesAndFinishedFirstExerciceAndDeallocateSUT_DoesNotRouteToNextExercice() {
         
-        var flow: Flow? = Flow(exercices: ["E1", "E2"], router: router)
+        var flow: Flow? = makeSUT(exercices:  ["E1", "E2"])
         
         flow?.start()
         flow = nil
@@ -88,5 +94,7 @@ class RouterSpy: Router {
         routedExercices.append(exercice)
         self.exerciceCallback = exerciceCallback
     }
+    
+    
     
 }
