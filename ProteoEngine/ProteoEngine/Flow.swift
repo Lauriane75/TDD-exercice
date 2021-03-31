@@ -8,7 +8,7 @@
 import Foundation
 
 protocol Router {
-    func routeToExercice()
+    func routeToExercice(exercice: String)
 }
 
 final class Flow {
@@ -16,15 +16,14 @@ final class Flow {
     private let exercices: [String]
     private let router: Router
     
-    
     init(exercices: [String], router: Router) {
         self.exercices = exercices
         self.router = router
     }
     
     func start() {
-        if exercices.count > 0 {
-            router.routeToExercice()
+        if let firstExercice = exercices.first {
+            router.routeToExercice(exercice: firstExercice)
         }
     }
     

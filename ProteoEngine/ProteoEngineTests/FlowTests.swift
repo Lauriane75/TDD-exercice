@@ -23,7 +23,6 @@ class FlowTests: XCTestCase {
     }
     
     func test_start_withOneExercice_DoesRouteToExercice() {
-        let router = RouterSpy()
         
         let flow = Flow(exercices: ["E1"], router: router)
         
@@ -33,14 +32,27 @@ class FlowTests: XCTestCase {
         
     }
     
+    func test_start_withOneExercice_RouteToCorrectExercice() {
+        
+        let flow = Flow(exercices: ["E1"], router: router)
+        
+        flow.start()
+        
+        XCTAssertEqual(router.exercices, ["E1"])
+        
+    }
+
+    
 }
 
 class RouterSpy: Router {
     
     var routeToExerciceCallCount = 0
+    var exercices = [String]()
     
-    func routeToExercice() {
+    func routeToExercice(exercice: String) {
         routeToExerciceCallCount += 1
+        exercices.append(exercice)
     }
     
 }
