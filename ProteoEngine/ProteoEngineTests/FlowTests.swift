@@ -43,7 +43,7 @@ class FlowTests: XCTestCase {
         
         sut.start()
         
-        router.exerciceCallback([10])
+        router.setCallBack([10])
         
         XCTAssertEqual(router.routedExercices, ["E1"])
     }
@@ -54,8 +54,8 @@ class FlowTests: XCTestCase {
         
         sut.start()
         
-        router.exerciceCallback([8,8,8])
-        router.exerciceCallback([8,8,8])
+        router.setCallBack([8,8,8])
+        router.setCallBack([8,8,8])
 
         
         XCTAssertEqual(router.routedExercices, ["E1", "E2", "E3"])
@@ -68,7 +68,7 @@ class FlowTests: XCTestCase {
         sut?.start()
         sut = nil
         
-        router.exerciceCallback([8,8,8])
+        router.setCallBack([8,8,8])
         
         XCTAssertEqual(router.routedExercices, ["E1"])
     }
@@ -77,7 +77,7 @@ class FlowTests: XCTestCase {
         
         makeSUT().start()
                 
-        router.exerciceCallback([8,8,8])
+        router.setCallBack([8,8,8])
         
         XCTAssertEqual(router.routedResult, [:])
     }
@@ -88,7 +88,7 @@ class FlowTests: XCTestCase {
         
         sut.start()
 
-        router.exerciceCallback([8,8,8])
+        router.setCallBack([8,8,8])
 
         XCTAssertEqual(router.routedResult, ["E1": [8,8,8]])
     }
@@ -99,8 +99,8 @@ class FlowTests: XCTestCase {
         
         sut.start()
 
-        router.exerciceCallback([8,8,8])
-        router.exerciceCallback([6,6,6,6])
+        router.setCallBack([8,8,8])
+        router.setCallBack([6,6,6,6])
 
         XCTAssertEqual(router.routedResult, ["E1": [8,8,8], "E2": [6,6,6,6]])
     }
@@ -116,7 +116,7 @@ class FlowTests: XCTestCase {
         
         makeSUT(exercices: ["E1","E2"]).start()
         
-        router.exerciceCallback([8,8,8])
+        router.setCallBack([8,8,8])
 
         XCTAssertNil(router.routedResult)
     }
@@ -126,11 +126,11 @@ class FlowTests: XCTestCase {
         private(set) var routedExercices = [String]()
         private(set) var routedResult: [String: [Int]]?
 
-        var exerciceCallback: ([Int]) -> Void = { _ in }
+        var setCallBack: ([Int]) -> Void = { _ in }
         
-        func routeToExercice(exercice: String, exerciceCallback: @escaping ([Int]) -> Void) {
+        func routeToExercice(exercice: String, setCallback: @escaping ([Int]) -> Void) {
             routedExercices.append(exercice)
-            self.exerciceCallback = exerciceCallback
+            self.setCallBack = setCallback
         }
         
         func routeToResult(result: [String : [Int]]) {
