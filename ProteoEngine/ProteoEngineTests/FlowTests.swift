@@ -112,6 +112,13 @@ class FlowTests: XCTestCase {
         XCTAssertEqual(router.routedResult!, ["E1": [8,8,8], "E2": [6,6,6,6]])
     }
     
+    func test_start_withOneExercices_DoesNotRouteToResult() {
+        
+        makeSUT(exercices: ["E1"]).start()
+
+        XCTAssertNil(router.routedResult)
+    }
+    
 }
 
 class RouterSpy: Router {
