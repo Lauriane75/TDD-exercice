@@ -82,10 +82,8 @@ class FlowTests: XCTestCase {
     
     func test_start_withoutExercice_routeToResult() {
         
-        let sut = makeSUT()
-        
-        sut.start()
-        
+        makeSUT().start()
+                
         router.exerciceCallback([8,8,8])
         
         XCTAssertEqual(router.routedResult!, [:])
@@ -119,7 +117,7 @@ class FlowTests: XCTestCase {
 class RouterSpy: Router {
     
     private(set) var routedExercices = [String]()
-    private(set) var routedResult: [String: [Int]]? = [:]
+    private(set) var routedResult: [String: [Int]]?
 
     var exerciceCallback: ([Int]) -> Void = { _ in }
     
