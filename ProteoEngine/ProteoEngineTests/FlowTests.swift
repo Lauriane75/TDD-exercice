@@ -86,7 +86,7 @@ class FlowTests: XCTestCase {
                 
         router.exerciceCallback([8,8,8])
         
-        XCTAssertEqual(router.routedResult!, [:])
+        XCTAssertEqual(router.routedResult, [:])
     }
     
     func test_start_withOneExerciceAndFinishExercice_routeToResult() {
@@ -97,7 +97,7 @@ class FlowTests: XCTestCase {
 
         router.exerciceCallback([8,8,8])
 
-        XCTAssertEqual(router.routedResult!, ["E1": [8,8,8]])
+        XCTAssertEqual(router.routedResult, ["E1": [8,8,8]])
     }
     
     func test_start_withTwoExercicesAndFinishFirstAndSecondExercice_routeToResult() {
@@ -109,12 +109,21 @@ class FlowTests: XCTestCase {
         router.exerciceCallback([8,8,8])
         router.exerciceCallback([6,6,6,6])
 
-        XCTAssertEqual(router.routedResult!, ["E1": [8,8,8], "E2": [6,6,6,6]])
+        XCTAssertEqual(router.routedResult, ["E1": [8,8,8], "E2": [6,6,6,6]])
     }
     
     func test_start_withOneExercices_DoesNotRouteToResult() {
         
         makeSUT(exercices: ["E1"]).start()
+
+        XCTAssertNil(router.routedResult)
+    }
+    
+    func test_start_withTwoExercices_AndFinishFirstExercice_DoesNotRouteToResult() {
+        
+        makeSUT(exercices: ["E1","E2"]).start()
+        
+        router.exerciceCallback([8,8,8])
 
         XCTAssertNil(router.routedResult)
     }
