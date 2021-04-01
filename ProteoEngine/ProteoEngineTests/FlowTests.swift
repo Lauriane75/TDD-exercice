@@ -97,9 +97,21 @@ class FlowTests: XCTestCase {
         
         sut.start()
 
-        router.exerciceCallback([2])
+        router.exerciceCallback([8,8,8])
 
         XCTAssertEqual(router.routedResult!, ["E1": [8,8,8]])
+    }
+    
+    func test_start_withTwoExercicesAndFinishFirstAndSecondExercice_routeToResult() {
+        
+        let sut = makeSUT(exercices: ["E1","E2"])
+        
+        sut.start()
+
+        router.exerciceCallback([8,8,8])
+        router.exerciceCallback([6,6,6,6])
+
+        XCTAssertEqual(router.routedResult!, ["E1": [8,8,8], "E2": [6,6,6,6]])
     }
     
 }

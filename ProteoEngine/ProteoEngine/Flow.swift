@@ -16,6 +16,7 @@ protocol Router {
 final class Flow {
     
     private let exercices: [String]
+    private var result: [String: [Int]] = [:]
     private let router: Router
     
     init(exercices: [String], router: Router) {
@@ -35,19 +36,21 @@ final class Flow {
     
     private func nextCallback(exercice: String) -> ([Int]) -> Void {
         // When Flow is kill we don't want to call routeNext(exercice: String)
-        return { [weak self] _ in self?.routeNext(exercice: exercice) }
+        return { [weak self] answer in self?.routeNext(exercice, answer) }
     }
     
-    private func routeNext(exercice: String) {
+    private func routeNext(_ exercice: String, _ answer: [Int]) {
         if let currentExerciceIndex = self.exercices.firstIndex(of: exercice) {
             let nextExerciceIndex = currentExerciceIndex+1
+            result[exercice] = answer
+        
             
             if nextExerciceIndex < self.exercices.count {
                 // go to next exercice
                 let nextExercice = exercices[nextExerciceIndex]
                 router.routeToExercice(exercice: nextExercice, exerciceCallback: nextCallback(exercice: nextExercice))
             } else {
-                router.routeToResult(result: ["E1" : [8,8,8]])
+                router.routeToResult(result: result)
             }
         }
     }
