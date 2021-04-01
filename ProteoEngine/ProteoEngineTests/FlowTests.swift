@@ -12,13 +12,6 @@ class FlowTests: XCTestCase {
     
     let router = RouterSpy()
     
-    // MARK: - Helpers
-    
-    // sut = System under test = replace with the class you want to test
-    private func makeSUT(exercices: [String] = []) -> Flow {
-        return Flow(exercices: exercices, router: router)
-    }
-    
     func test_start_withoutExercice_doesNotRouteExercice() {
         
         makeSUT().start()
@@ -128,21 +121,29 @@ class FlowTests: XCTestCase {
         XCTAssertNil(router.routedResult)
     }
     
-}
+    class RouterSpy: Router {
+        
+        private(set) var routedExercices = [String]()
+        private(set) var routedResult: [String: [Int]]?
 
-class RouterSpy: Router {
-    
-    private(set) var routedExercices = [String]()
-    private(set) var routedResult: [String: [Int]]?
-
-    var exerciceCallback: ([Int]) -> Void = { _ in }
-    
-    func routeToExercice(exercice: String, exerciceCallback: @escaping ([Int]) -> Void) {
-        routedExercices.append(exercice)
-        self.exerciceCallback = exerciceCallback
+        var exerciceCallback: ([Int]) -> Void = { _ in }
+        
+        func routeToExercice(exercice: String, exerciceCallback: @escaping ([Int]) -> Void) {
+            routedExercices.append(exercice)
+            self.exerciceCallback = exerciceCallback
+        }
+        
+        func routeToResult(result: [String : [Int]]) {
+            routedResult = result
+        }
     }
     
-    func routeToResult(result: [String : [Int]]) {
-        routedResult = result
+    // MARK: - Helpers
+    
+    private func makeSUT(exercices: [String] = []) -> Flow<String, Int, RouterSpy> {
+        return Flow(exercices: exercices, router: router)
     }
+    
 }
+
+

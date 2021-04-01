@@ -8,18 +8,20 @@
 import Foundation
 
 protocol Router {
-    func routeToExercice(exercice: String, exerciceCallback: @escaping ([Int]) -> Void)
+    associatedtype Exercice: Hashable
+    associatedtype Repetition
+    func routeToExercice(exercice: Exercice, exerciceCallback: @escaping ([Repetition]) -> Void)
     
-    func routeToResult(result: [String: [Int]])
+    func routeToResult(result: [Exercice: [Repetition]])
 }
 
-final class Flow {
+final class Flow <Exercice, Repetition, R: Router> where R.Exercice == Exercice, R.Repetition == Repetition {
     
-    private let exercices: [String]
-    private var result: [String: [Int]] = [:]
-    private let router: Router
+    private let exercices: [Exercice]
+    private var result: [Exercice: [Repetition]] = [:]
+    private let router: R
     
-    init(exercices: [String], router: Router) {
+    init(exercices: [Exercice], router: R) {
         self.exercices = exercices
         self.router = router
     }
@@ -34,12 +36,12 @@ final class Flow {
         }
     }
     
-    private func nextCallback(exercice: String) -> ([Int]) -> Void {
+    private func nextCallback(exercice: Exercice) -> ([Repetition]) -> Void {
         // When Flow is kill we don't want to call routeNext(exercice: String)
         return { [weak self] answer in self?.routeNext(exercice, answer) }
     }
     
-    private func routeNext(_ exercice: String, _ answer: [Int]) {
+    private func routeNext(_ exercice: Exercice, _ answer: [Repetition]) {
         if let currentExerciceIndex = self.exercices.firstIndex(of: exercice) {
             let nextExerciceIndex = currentExerciceIndex+1
             result[exercice] = answer
