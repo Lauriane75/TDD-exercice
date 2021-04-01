@@ -21,19 +21,15 @@ class FlowTests: XCTestCase {
     
     func test_start_withoutExercice_doesNotRouteExercice() {
         
-        let sut = makeSUT()
-        
-        sut.start()
+        makeSUT().start()
         
         XCTAssertTrue(router.routedExercices.isEmpty)
         
     }
 
     func test_start_withOneExercice_RouteToCorrectExercice() {
-        
-        let sut = makeSUT(exercices: ["E1"])
-        
-        sut.start()
+                
+        makeSUT(exercices: ["E1"]).start()
         
         XCTAssertEqual(router.routedExercices, ["E1"])
     }
@@ -84,11 +80,24 @@ class FlowTests: XCTestCase {
         XCTAssertEqual(router.routedExercices, ["E1"])
     }
     
+    func test_start_withoutExercice_routeToResult() {
+        
+        let sut = makeSUT()
+        
+        sut.start()
+        
+        router.exerciceCallback([8,8,8])
+        
+        XCTAssertEqual(router.routedResult!, [:])
+    }
+    
 }
 
 class RouterSpy: Router {
     
     private(set) var routedExercices = [String]()
+    private(set) var routedResult: [String: [Int]]? = [:]
+
     var exerciceCallback: ([Int]) -> Void = { _ in }
     
     func routeToExercice(exercice: String, exerciceCallback: @escaping ([Int]) -> Void) {
@@ -96,6 +105,7 @@ class RouterSpy: Router {
         self.exerciceCallback = exerciceCallback
     }
     
-    
-    
+    func routeToResult(result: [String : [Int]]) {
+        routedResult = result
+    }
 }

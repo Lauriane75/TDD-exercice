@@ -9,6 +9,8 @@ import Foundation
 
 protocol Router {
     func routeToExercice(exercice: String, exerciceCallback: @escaping ([Int]) -> Void)
+    
+    func routeToResult(result: [String: [Int]])
 }
 
 final class Flow {
@@ -25,6 +27,9 @@ final class Flow {
         if let firstExercice = exercices.first {
             router.routeToExercice(exercice: firstExercice,
                                    exerciceCallback: nextCallback(exercice: firstExercice))
+        } else {
+            // Empty dictionary
+            router.routeToResult(result: [:])
         }
     }
     
