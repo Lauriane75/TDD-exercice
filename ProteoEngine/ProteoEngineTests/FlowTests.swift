@@ -91,6 +91,17 @@ class FlowTests: XCTestCase {
         XCTAssertEqual(router.routedResult!, [:])
     }
     
+    func test_start_withOneExerciceAndFinishExercice_routeToResult() {
+        
+        let sut = makeSUT(exercices: ["E1"])
+        
+        sut.start()
+
+        router.exerciceCallback([2])
+
+        XCTAssertEqual(router.routedResult!, ["E1": [8,8,8]])
+    }
+    
 }
 
 class RouterSpy: Router {

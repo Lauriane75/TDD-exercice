@@ -46,6 +46,8 @@ final class Flow {
                 // go to next exercice
                 let nextExercice = exercices[nextExerciceIndex]
                 router.routeToExercice(exercice: nextExercice, exerciceCallback: nextCallback(exercice: nextExercice))
+            } else {
+                router.routeToResult(result: ["E1" : [8,8,8]])
             }
         }
     }
