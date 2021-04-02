@@ -64,6 +64,7 @@ class SetUseCaseTests: XCTestCase {
         output.repetitionCallback(5)
         
         XCTAssertNil(output.result)
+        XCTAssertEqual(output.repetitionRemainder, 2)
     }
     
     func test_start_withTwoRepetitionsAndFinishFirstAndSecondRep_preprareNextExercice() {
