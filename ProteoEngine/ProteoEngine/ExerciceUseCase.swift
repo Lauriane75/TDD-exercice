@@ -8,26 +8,26 @@
 import Foundation
 
 protocol ExerciceUseCaseOutput {
-    func displayRepetition(remainder: Int, repetitionCallback: @escaping (Int) -> Void)
-    func prepareNextSerie(result: [Int])
+    func displaySerie(remainder: Int, repetitionCallback: @escaping (Int) -> Void)
+    func exerciceFinished(result: [Int])
 }
 
 final class ExerciceUseCase {
     
     private let output: ExerciceUseCaseOutput
-    private let nbOfRepetitions: Int
+    private let nbOfSeries: Int
     private var result = [Int]()
     
-    init(output: ExerciceUseCaseOutput, nbOfRepetitions: Int) {
+    init(output: ExerciceUseCaseOutput, nbOfSeries: Int) {
         self.output = output
-        self.nbOfRepetitions = nbOfRepetitions
+        self.nbOfSeries = nbOfSeries
     }
     
     func start() {
-        if nbOfRepetitions > 0 {
-            output.displayRepetition(remainder: nbOfRepetitions, repetitionCallback: nextCallback(nbOfRepetitions))
+        if nbOfSeries > 0 {
+            output.displaySerie(remainder: nbOfSeries, repetitionCallback: nextCallback(nbOfSeries))
         } else {
-            output.prepareNextSerie(result: result)
+            output.exerciceFinished(result: result)
         }
     }
     
@@ -41,9 +41,9 @@ final class ExerciceUseCase {
         let nextRepetitionRemainder = currentRemainder - 1
         result.append(repetition)
         if nextRepetitionRemainder > 0 {
-            output.displayRepetition(remainder: nextRepetitionRemainder, repetitionCallback: nextCallback(nextRepetitionRemainder))
+            output.displaySerie(remainder: nextRepetitionRemainder, repetitionCallback: nextCallback(nextRepetitionRemainder))
         } else {
-            output.prepareNextSerie(result: result)
+            output.exerciceFinished(result: result)
         }
     }
     
