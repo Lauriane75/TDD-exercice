@@ -11,22 +11,17 @@ import XCTest
 class SetUseCaseTests: XCTestCase {
     
     func test_start_withZeroRepetitions_doesNotDisplayRepetition() {
-        let output = OutputSpy()
-        let sut = SetUseCase(output: output, nbOfRepetitions: 0)
-        sut.start()
+        makeSUT(nbOfRepetitions: 0).start()
         XCTAssertEqual(output.repetitionCallCount, 0)
     }
     
     func test_start_withOneRepetition_displayRepetition() {
-        let output = OutputSpy()
-        let sut = SetUseCase(output: output, nbOfRepetitions: 1)
-        sut.start()
+        makeSUT(nbOfRepetitions: 1).start()
         XCTAssertEqual(output.repetitionCallCount, 1)
     }
     
     func test_start_withTwoRepetitionsAndFinishFirstRep_displaySecondRepetition() {
-        let output = OutputSpy()
-        let sut = SetUseCase(output: output, nbOfRepetitions: 2)
+        let sut = makeSUT(nbOfRepetitions: 2)
         
         sut.start()
         
@@ -46,5 +41,12 @@ class SetUseCaseTests: XCTestCase {
             self.repetitionCallback = repetitionCallback
         }
     }
-   
+    
+    // MARK: - Helpers
+    
+    let output = OutputSpy()
+    
+    private func makeSUT(nbOfRepetitions: Int) -> SetUseCase {
+        return SetUseCase(output: output, nbOfRepetitions: nbOfRepetitions)
+    }
 }
