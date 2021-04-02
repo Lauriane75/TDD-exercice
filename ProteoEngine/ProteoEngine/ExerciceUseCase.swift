@@ -7,18 +7,18 @@
 
 import Foundation
 
-protocol SetUseCaseOutput {
+protocol ExerciceUseCaseOutput {
     func displayRepetition(remainder: Int, repetitionCallback: @escaping (Int) -> Void)
     func prepareNextSerie(result: [Int])
 }
 
-final class SetUseCase {
+final class ExerciceUseCase {
     
-    private let output: SetUseCaseOutput
+    private let output: ExerciceUseCaseOutput
     private let nbOfRepetitions: Int
     private var result = [Int]()
     
-    init(output: SetUseCaseOutput, nbOfRepetitions: Int) {
+    init(output: ExerciceUseCaseOutput, nbOfRepetitions: Int) {
         self.output = output
         self.nbOfRepetitions = nbOfRepetitions
     }

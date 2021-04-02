@@ -10,7 +10,7 @@
 		460258CC260D3013000DF81E /* FlowTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 460258CB260D3013000DF81E /* FlowTests.swift */; };
 		46287F28260C772D00F3D7EB /* ProteoEngine.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46287F1E260C772D00F3D7EB /* ProteoEngine.framework */; };
 		46C961BB260F31B40073DB81 /* SetUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46C961BA260F31B40073DB81 /* SetUseCaseTests.swift */; };
-		46C961C2260F3DC70073DB81 /* SetUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46C961C1260F3DC70073DB81 /* SetUseCase.swift */; };
+		46C961C2260F3DC70073DB81 /* ExerciceUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46C961C1260F3DC70073DB81 /* ExerciceUseCase.swift */; };
 		46FD6613260D3CFF0028233B /* Flow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46FD6612260D3CFF0028233B /* Flow.swift */; };
 /* End PBXBuildFile section */
 
@@ -31,7 +31,7 @@
 		46287F27260C772D00F3D7EB /* ProteoEngineTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ProteoEngineTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		46287F2E260C772D00F3D7EB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		46C961BA260F31B40073DB81 /* SetUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetUseCaseTests.swift; sourceTree = "<group>"; };
-		46C961C1260F3DC70073DB81 /* SetUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetUseCase.swift; sourceTree = "<group>"; };
+		46C961C1260F3DC70073DB81 /* ExerciceUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciceUseCase.swift; sourceTree = "<group>"; };
 		46FD6612260D3CFF0028233B /* Flow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Flow.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -77,7 +77,7 @@
 			children = (
 				46287F22260C772D00F3D7EB /* Info.plist */,
 				46FD6612260D3CFF0028233B /* Flow.swift */,
-				46C961C1260F3DC70073DB81 /* SetUseCase.swift */,
+				46C961C1260F3DC70073DB81 /* ExerciceUseCase.swift */,
 			);
 			path = ProteoEngine;
 			sourceTree = "<group>";
@@ -201,7 +201,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				46C961C2260F3DC70073DB81 /* SetUseCase.swift in Sources */,
+				46C961C2260F3DC70073DB81 /* ExerciceUseCase.swift in Sources */,
 				46FD6613260D3CFF0028233B /* Flow.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

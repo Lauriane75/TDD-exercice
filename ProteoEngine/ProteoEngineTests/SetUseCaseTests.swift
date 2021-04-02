@@ -56,7 +56,7 @@ class SetUseCaseTests: XCTestCase {
     }
     
     func test_start_withOneRepetitionsAndDeallocateSUTBeforeFinishRep_DoesNotPrepareNextExercice() {
-        var sut: SetUseCase? = makeSUT(nbOfRepetitions: 2)
+        var sut: ExerciceUseCase? = makeSUT(nbOfRepetitions: 2)
         
         sut?.start()
         
@@ -88,7 +88,7 @@ class SetUseCaseTests: XCTestCase {
         XCTAssertEqual(output.result, [6])
     }
     
-    class OutputSpy: SetUseCaseOutput {
+    class OutputSpy: ExerciceUseCaseOutput {
         
         private(set) var repetitionRemainder: Int?
         private(set) var result: [Int]?
@@ -109,7 +109,7 @@ class SetUseCaseTests: XCTestCase {
     
     let output = OutputSpy()
     
-    private func makeSUT(nbOfRepetitions: Int) -> SetUseCase {
-        return SetUseCase(output: output, nbOfRepetitions: nbOfRepetitions)
+    private func makeSUT(nbOfRepetitions: Int) -> ExerciceUseCase {
+        return ExerciceUseCase(output: output, nbOfRepetitions: nbOfRepetitions)
     }
 }
