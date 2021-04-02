@@ -9,9 +9,7 @@ import XCTest
 @testable import ProteoEngine
 
 class FlowTests: XCTestCase {
-    
-    let router = RouterSpy()
-    
+        
     func test_start_withoutExercice_doesNotRouteExercice() {
         
         makeSUT().start()
@@ -76,7 +74,8 @@ class FlowTests: XCTestCase {
     func test_start_withoutExercice_routeToResult() {
         
         makeSUT().start()
-                
+        
+//        why calling the callback here ?
         router.setCallBack([8,8,8])
         
         XCTAssertEqual(router.routedResult, [:])
@@ -139,6 +138,8 @@ class FlowTests: XCTestCase {
     }
     
     // MARK: - Helpers
+    
+    let router = RouterSpy()
     
     private func makeSUT(exercices: [String] = []) -> Flow<String, Int, RouterSpy> {
         return Flow(exercices: exercices, router: router)
