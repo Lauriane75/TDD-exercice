@@ -21,7 +21,7 @@ class SetUseCaseTests: XCTestCase {
         
         sut.start()
         
-        XCTAssertEqual(output.preprareNextSetCallCount, 1)
+        XCTAssertEqual(output.result, [])
     }
     
     func test_start_withOneRepetition_displayRepetition() {
@@ -58,9 +58,7 @@ class SetUseCaseTests: XCTestCase {
     class OutputSpy: SetUseCaseOutput {
         
         var repetitionRemainder: Int?
-        
-        var preprareNextSetCallCount = 0
-        
+        var result: [Int]?
         var repetitionCallback: ((Int) -> Void) = { _ in}
         
         func displayRepetition(remainder: Int, repetitionCallback: @escaping (Int) -> Void) {
@@ -69,8 +67,8 @@ class SetUseCaseTests: XCTestCase {
             self.repetitionCallback = repetitionCallback
         }
         
-        func prepareNextSerie() {
-            preprareNextSetCallCount += 1
+        func prepareNextSerie(result: [Int]) {
+            self.result = result
         }
     }
     

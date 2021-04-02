@@ -9,13 +9,14 @@ import Foundation
 
 protocol SetUseCaseOutput {
     func displayRepetition(remainder: Int, repetitionCallback: @escaping (Int) -> Void)
-    func prepareNextSerie()
+    func prepareNextSerie(result: [Int])
 }
 
 class SetUseCase {
     
     let output: SetUseCaseOutput
     let nbOfRepetitions: Int
+    var result = [Int]()
     
     init(output: SetUseCaseOutput, nbOfRepetitions: Int) {
         self.output = output
@@ -26,17 +27,24 @@ class SetUseCase {
         if nbOfRepetitions > 0 {
             output.displayRepetition(remainder: nbOfRepetitions, repetitionCallback: nextCallback(nbOfRepetitions))
         } else {
-            output.prepareNextSerie()
+            output.prepareNextSerie(result: result)
         }
     }
     
     func nextCallback(_ repetitionRemainder: Int) -> (Int) -> Void {
-        return { [unowned self] _ in
-            let nextRepetitionRemainder = repetitionRemainder - 1
-            if nextRepetitionRemainder > 0 {
-                print("repetitionRemainder = \(repetitionRemainder)")
-                self.output.displayRepetition(remainder: nextRepetitionRemainder, repetitionCallback: self.nextCallback(nextRepetitionRemainder))
-            }
+        return { [unowned self] repetition in
+            self.displayNext(repetitionRemainder, repetition: repetition)
         }
     }
+    
+    private func displayNext(_ currentRemainder: Int, repetition: Int) {
+        let nextRepetitionRemainder = currentRemainder - 1
+        result.append(repetition)
+        if nextRepetitionRemainder > 0 {
+            output.displayRepetition(remainder: nextRepetitionRemainder, repetitionCallback: nextCallback(nextRepetitionRemainder))
+        } else {
+            output.prepareNextSerie(result: result)
+        }
+    }
+    
 }
