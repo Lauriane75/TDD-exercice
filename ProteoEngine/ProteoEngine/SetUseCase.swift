@@ -12,11 +12,11 @@ protocol SetUseCaseOutput {
     func prepareNextSerie(result: [Int])
 }
 
-class SetUseCase {
+final class SetUseCase {
     
-    let output: SetUseCaseOutput
-    let nbOfRepetitions: Int
-    var result = [Int]()
+    private let output: SetUseCaseOutput
+    private let nbOfRepetitions: Int
+    private var result = [Int]()
     
     init(output: SetUseCaseOutput, nbOfRepetitions: Int) {
         self.output = output

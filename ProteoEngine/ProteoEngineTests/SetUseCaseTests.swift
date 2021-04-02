@@ -89,8 +89,8 @@ class SetUseCaseTests: XCTestCase {
     
     class OutputSpy: SetUseCaseOutput {
         
-        var repetitionRemainder: Int?
-        var result: [Int]?
+        private(set) var repetitionRemainder: Int?
+        private(set) var result: [Int]?
         var repetitionCallback: ((Int) -> Void) = { _ in}
         
         func displayRepetition(remainder: Int, repetitionCallback: @escaping (Int) -> Void) {
