@@ -32,8 +32,8 @@ class SetUseCase {
     }
     
     func nextCallback(_ repetitionRemainder: Int) -> (Int) -> Void {
-        return { [unowned self] repetition in
-            self.displayNext(repetitionRemainder, repetition: repetition)
+        return { [weak self] in
+            self?.displayNext(repetitionRemainder, repetition: $0)
         }
     }
     
