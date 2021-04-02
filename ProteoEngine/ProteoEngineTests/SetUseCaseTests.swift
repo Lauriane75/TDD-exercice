@@ -24,11 +24,26 @@ class SetUseCaseTests: XCTestCase {
         XCTAssertEqual(output.repetitionCallCount, 1)
     }
     
+    func test_start_withTwoRepetitionsAndFinishFirstRep_displaySecondRepetition() {
+        let output = OutputSpy()
+        let sut = SetUseCase(output: output, nbOfRepetitions: 2)
+        
+        sut.start()
+        
+        output.repetitionCallback(6)
+        
+        XCTAssertEqual(output.repetitionCallCount, 2)
+    }
+    
     class OutputSpy: SetUseCaseOutput {
+        
         var repetitionCallCount = 0
         
-        func displayRepetition() {
+        var repetitionCallback: ((Int) -> Void) = { _ in}
+        
+        func displayRepetition(remainder: Int, repetitionCallback: @escaping (Int) -> Void) {
             repetitionCallCount += 1
+            self.repetitionCallback = repetitionCallback
         }
     }
    

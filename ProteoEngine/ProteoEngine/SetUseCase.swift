@@ -8,7 +8,7 @@
 import Foundation
 
 protocol SetUseCaseOutput {
-    func displayRepetition()
+    func displayRepetition(remainder: Int, repetitionCallback: @escaping (Int) -> Void)
 }
 
 class SetUseCase {
@@ -23,7 +23,9 @@ class SetUseCase {
     
     func start() {
         if nbOfRepetitions > 0 {
-            output.displayRepetition()
+            output.displayRepetition(remainder: nbOfRepetitions) {
+                [unowned self] (_) in output.displayRepetition(remainder: self.nbOfRepetitions) { _ in }
+            }
         }
     }
   
