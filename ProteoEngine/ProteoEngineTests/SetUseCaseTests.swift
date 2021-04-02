@@ -77,6 +77,16 @@ class SetUseCaseTests: XCTestCase {
         XCTAssertEqual(output.result, [6,5])
     }
     
+    func test_start_withOneRepetitionsAndFinishRepetition_preprareNextSerie() {
+        let sut = makeSUT(nbOfRepetitions: 1)
+        
+        sut.start()
+        
+        output.repetitionCallback(6)
+        
+        XCTAssertEqual(output.result, [6])
+    }
+    
     class OutputSpy: SetUseCaseOutput {
         
         var repetitionRemainder: Int?
