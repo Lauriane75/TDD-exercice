@@ -30,6 +30,17 @@ class SetUseCaseTests: XCTestCase {
         XCTAssertEqual(output.repetitionCallCount, 2)
     }
     
+    func test_start_withThreeRepetitionsAndFinishSecondRep_displayThirdRepetition() {
+        let sut = makeSUT(nbOfRepetitions: 3)
+        
+        sut.start()
+        
+        output.repetitionCallback(6)
+        output.repetitionCallback(6)
+        
+        XCTAssertEqual(output.repetitionCallCount, 3)
+    }
+    
     class OutputSpy: SetUseCaseOutput {
         
         var repetitionCallCount = 0

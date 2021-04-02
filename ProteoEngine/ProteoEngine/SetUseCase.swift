@@ -23,10 +23,13 @@ class SetUseCase {
     
     func start() {
         if nbOfRepetitions > 0 {
-            output.displayRepetition(remainder: nbOfRepetitions) {
-                [unowned self] (_) in output.displayRepetition(remainder: self.nbOfRepetitions) { _ in }
-            }
+            output.displayRepetition(remainder: nbOfRepetitions, repetitionCallback: nextCallback(nbOfRepetitions))
         }
     }
-  
+    
+    func nextCallback(_ nbOfRepetitions: Int) -> (Int) -> Void {
+        return { [unowned self] _ in
+            self.output.displayRepetition(remainder: nbOfRepetitions, repetitionCallback: self.nextCallback(nbOfRepetitions))
+        }
+    }
 }
