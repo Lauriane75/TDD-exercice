@@ -48,7 +48,7 @@ class SoundUseCaseTests: XCTestCase {
     
     // MARK: - Helpers
     
-    class PrepareTrackPlayer: TrackPlayer {
+    class PrepareTrackPlayer: Player {
         var playCallCount = 0
         
         func play() {
@@ -56,7 +56,7 @@ class SoundUseCaseTests: XCTestCase {
         }
     }
     
-    class StartTrackPlayer: TrackPlayer {
+    class StartTrackPlayer: Player {
         var playCallCount = 0
         
         func play() {

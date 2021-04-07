@@ -9,26 +9,26 @@ import Foundation
 import AVKit
 
 
-protocol TrackPlayer {
+protocol Player {
     func play()
 }
 
-class NotifiesPlayerSerieStart {
+final class NotifiesPlayerSerieStart {
     
-    let preparePlayer: TrackPlayer
-    let startPlayer: TrackPlayer
+    private let prepareSetPlayer: Player
+    private let startSetPlayer: Player
     
-    init(preparePlayer: TrackPlayer, startPlayer: TrackPlayer) {
-        self.preparePlayer = preparePlayer
-        self.startPlayer = startPlayer
+    init(preparePlayer: Player, startPlayer: Player) {
+        self.prepareSetPlayer = preparePlayer
+        self.startSetPlayer = startPlayer
     }
     
     func play(time: Int) {
         if time >= 1 && time <= 5 {
-            preparePlayer.play()
+            prepareSetPlayer.play()
         }
         if time == 0 {
-            startPlayer.play()
+            startSetPlayer.play()
             
         }
     }
