@@ -14,6 +14,8 @@
 		5B5E8AE02617629F003801D0 /* NotifiesPlayerSerieStart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B5E8ADC2617625D003801D0 /* NotifiesPlayerSerieStart.swift */; };
 		5B759540261763AD00E6028D /* ExerciceFlowTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46C961BA260F31B40073DB81 /* ExerciceFlowTests.swift */; };
 		5B759545261763B100E6028D /* SoundUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B5E8AE5261762B5003801D0 /* SoundUseCaseTests.swift */; };
+		5B949BDA261DE98E00398ACC /* SerieTimerInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B949BD9261DE98E00398ACC /* SerieTimerInteractorTests.swift */; };
+		5B949BE1261DEB9F00398ACC /* TimerSerieInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B949BDD261DEB3400398ACC /* TimerSerieInteractor.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,6 +39,8 @@
 		46FD6612260D3CFF0028233B /* Flow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Flow.swift; sourceTree = "<group>"; };
 		5B5E8ADC2617625D003801D0 /* NotifiesPlayerSerieStart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotifiesPlayerSerieStart.swift; sourceTree = "<group>"; };
 		5B5E8AE5261762B5003801D0 /* SoundUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundUseCaseTests.swift; sourceTree = "<group>"; };
+		5B949BD9261DE98E00398ACC /* SerieTimerInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SerieTimerInteractorTests.swift; sourceTree = "<group>"; };
+		5B949BDD261DEB3400398ACC /* TimerSerieInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerSerieInteractor.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +87,7 @@
 				46FD6612260D3CFF0028233B /* Flow.swift */,
 				46C961C1260F3DC70073DB81 /* ExerciceFlow.swift */,
 				5B5E8ADC2617625D003801D0 /* NotifiesPlayerSerieStart.swift */,
+				5B949BDD261DEB3400398ACC /* TimerSerieInteractor.swift */,
 			);
 			path = ProteoEngine;
 			sourceTree = "<group>";
@@ -94,6 +99,7 @@
 				460258CB260D3013000DF81E /* FlowTests.swift */,
 				46C961BA260F31B40073DB81 /* ExerciceFlowTests.swift */,
 				5B5E8AE5261762B5003801D0 /* SoundUseCaseTests.swift */,
+				5B949BD9261DE98E00398ACC /* SerieTimerInteractorTests.swift */,
 			);
 			path = ProteoEngineTests;
 			sourceTree = "<group>";
@@ -208,6 +214,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				46C961C2260F3DC70073DB81 /* ExerciceFlow.swift in Sources */,
+				5B949BE1261DEB9F00398ACC /* TimerSerieInteractor.swift in Sources */,
 				46FD6613260D3CFF0028233B /* Flow.swift in Sources */,
 				5B5E8AE02617629F003801D0 /* NotifiesPlayerSerieStart.swift in Sources */,
 			);
@@ -218,6 +225,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5B759545261763B100E6028D /* SoundUseCaseTests.swift in Sources */,
+				5B949BDA261DE98E00398ACC /* SerieTimerInteractorTests.swift in Sources */,
 				5B759540261763AD00E6028D /* ExerciceFlowTests.swift in Sources */,
 				460258CC260D3013000DF81E /* FlowTests.swift in Sources */,
 			);
