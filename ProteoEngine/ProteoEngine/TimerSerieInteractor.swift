@@ -29,7 +29,8 @@ class TimerSerieInteractor {
         
         timerDelegate.start()
         
-        timerDelegate.tick {
+        timerDelegate.tick { [weak self] in
+            guard let self = self else { return }
             self.restTime -= 1
             callback(self.restTime)
             

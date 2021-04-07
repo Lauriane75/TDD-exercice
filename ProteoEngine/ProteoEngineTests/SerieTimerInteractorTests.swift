@@ -43,17 +43,30 @@ class TimerSerieInteractorTests: XCTestCase {
     func test_start_atThirdRestSeconds_decreaseRestTimeToZero_TimerDelegateIsStopped() {
         let timerSpy = TimerSpy()
         let sut = makeSUT()
-        var timerTimes: [Int] = []
+        var timerRest: [Int] = []
 
-        sut.start(restTime: 3) { timerTimes.append($0) }
+        sut.start(restTime: 3) { timerRest.append($0) }
 
         timerSpy.thickCallBack?()
         timerSpy.thickCallBack?()
         timerSpy.thickCallBack?()
 
 
-        XCTAssertEqual(timerTimes, [3, 2, 1, 0])
+        XCTAssertEqual(timerRest, [3, 2, 1, 0])
         XCTAssertEqual(timerSpy.stopCallCount, 1)
+    }
+    
+    func test_start_andDeallocatedSUT_doesNotDecreaseRestTime() {
+        var sut: TimerSerieInteractor? = makeSUT()
+        var timerRests: [Int] = []
+
+        sut?.start(restTime: 3) { timerRests.append($0) }
+
+        sut = nil
+        
+        timerSpy.thickCallBack?()
+
+        XCTAssertEqual(timerRests, [3])
     }
     
     // MARK: - Helpers
