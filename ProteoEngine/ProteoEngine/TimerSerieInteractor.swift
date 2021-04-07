@@ -9,7 +9,8 @@ import Foundation
 
 protocol TimerDelegate {
     func start()
-    func thick(callback: @escaping () -> Void)
+    func stop()
+    func tick(callback: @escaping () -> Void)
 }
 
 class TimerSerieInteractor {
@@ -28,9 +29,13 @@ class TimerSerieInteractor {
         
         timerDelegate.start()
         
-        timerDelegate.thick {
+        timerDelegate.tick {
             self.restTime -= 1
             callback(self.restTime)
+            
+            if self.restTime == 0 {
+                self.timerDelegate.stop()
+            }
         }
     }
     
