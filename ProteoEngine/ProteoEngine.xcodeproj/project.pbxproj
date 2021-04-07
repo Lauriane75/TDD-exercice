@@ -84,10 +84,8 @@
 			isa = PBXGroup;
 			children = (
 				46287F22260C772D00F3D7EB /* Info.plist */,
-				46FD6612260D3CFF0028233B /* WorkoutFlow.swift */,
-				46C961C1260F3DC70073DB81 /* ExerciceFlow.swift */,
-				5B5E8ADC2617625D003801D0 /* SerieSoundInterractor.swift */,
-				5B949BDD261DEB3400398ACC /* SerieTimeInteractor.swift */,
+				5B949C13261E0C7200398ACC /* Flow */,
+				5B949C14261E0C8800398ACC /* Interractor */,
 			);
 			path = ProteoEngine;
 			sourceTree = "<group>";
@@ -95,13 +93,47 @@
 		46287F2B260C772D00F3D7EB /* ProteoEngineTests */ = {
 			isa = PBXGroup;
 			children = (
+				5B949C15261E0CAA00398ACC /* Flow */,
+				5B949C16261E0CAF00398ACC /* Interractor */,
 				46287F2E260C772D00F3D7EB /* Info.plist */,
+			);
+			path = ProteoEngineTests;
+			sourceTree = "<group>";
+		};
+		5B949C13261E0C7200398ACC /* Flow */ = {
+			isa = PBXGroup;
+			children = (
+				46FD6612260D3CFF0028233B /* WorkoutFlow.swift */,
+				46C961C1260F3DC70073DB81 /* ExerciceFlow.swift */,
+			);
+			path = Flow;
+			sourceTree = "<group>";
+		};
+		5B949C14261E0C8800398ACC /* Interractor */ = {
+			isa = PBXGroup;
+			children = (
+				5B5E8ADC2617625D003801D0 /* SerieSoundInterractor.swift */,
+				5B949BDD261DEB3400398ACC /* SerieTimeInteractor.swift */,
+			);
+			path = Interractor;
+			sourceTree = "<group>";
+		};
+		5B949C15261E0CAA00398ACC /* Flow */ = {
+			isa = PBXGroup;
+			children = (
 				460258CB260D3013000DF81E /* WorkoutFlowTests.swift */,
 				46C961BA260F31B40073DB81 /* ExerciceFlowTests.swift */,
+			);
+			path = Flow;
+			sourceTree = "<group>";
+		};
+		5B949C16261E0CAF00398ACC /* Interractor */ = {
+			isa = PBXGroup;
+			children = (
 				5B5E8AE5261762B5003801D0 /* SerieSoundInterractorTests.swift */,
 				5B949BD9261DE98E00398ACC /* SerieTimerInteractorTests.swift */,
 			);
-			path = ProteoEngineTests;
+			path = Interractor;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
