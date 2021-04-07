@@ -8,15 +8,15 @@
 import Foundation
 
 protocol ExerciceUseCaseOutput {
-    func displaySerie(remainder: Int, repetitionCallback: @escaping (Int) -> Void)
-    func exerciceFinished(result: [Int])
+    func displaySerie(remainder: Int, serieCallback: @escaping (Int) -> Void)
+    func exerciceFinished(series: [Int])
 }
 
 final class ExerciceUseCase {
     
     private let output: ExerciceUseCaseOutput
     private let nbOfSeries: Int
-    private var result = [Int]()
+    private var series = [Int]()
     
     init(output: ExerciceUseCaseOutput, nbOfSeries: Int) {
         self.output = output
@@ -25,25 +25,25 @@ final class ExerciceUseCase {
     
     func start() {
         if nbOfSeries > 0 {
-            output.displaySerie(remainder: nbOfSeries, repetitionCallback: nextCallback(nbOfSeries))
+            output.displaySerie(remainder: nbOfSeries, serieCallback: nextCallback(nbOfSeries))
         } else {
-            output.exerciceFinished(result: result)
+            output.exerciceFinished(series: series)
         }
     }
     
-    func nextCallback(_ repetitionRemainder: Int) -> (Int) -> Void {
+    func nextCallback(_ serieRemainder: Int) -> (Int) -> Void {
         return { [weak self] in
-            self?.displayNext(repetitionRemainder, repetition: $0)
+            self?.displayNext(serieRemainder, repetition: $0)
         }
     }
     
     private func displayNext(_ currentRemainder: Int, repetition: Int) {
-        let nextRepetitionRemainder = currentRemainder - 1
-        result.append(repetition)
-        if nextRepetitionRemainder > 0 {
-            output.displaySerie(remainder: nextRepetitionRemainder, repetitionCallback: nextCallback(nextRepetitionRemainder))
+        series.append(repetition)
+        let nextSerieRemainder = currentRemainder - 1
+        if nextSerieRemainder > 0 {
+            output.displaySerie(remainder: nextSerieRemainder, serieCallback: nextCallback(nextSerieRemainder))
         } else {
-            output.exerciceFinished(result: result)
+            output.exerciceFinished(series: series)
         }
     }
     

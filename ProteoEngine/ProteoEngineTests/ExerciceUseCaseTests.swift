@@ -110,13 +110,13 @@ class ExerciceUseCaseTests: XCTestCase {
         private(set) var result: [Int]?
         var serieCallback: ((Int) -> Void) = { _ in}
         
-        func displaySerie(remainder: Int, repetitionCallback: @escaping (Int) -> Void) {
+        func displaySerie(remainder: Int, serieCallback: @escaping (Int) -> Void) {
             serieRemainder = remainder
-            self.serieCallback = repetitionCallback
+            self.serieCallback = serieCallback
         }
         
-        func exerciceFinished(result: [Int]) {
-            self.result = result
+        func exerciceFinished(series: [Int]) {
+            self.result = series
         }
     }
     

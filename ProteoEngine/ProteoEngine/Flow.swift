@@ -37,7 +37,7 @@ final class Flow <Exercice, Repetition, R: Router> where R.Exercice == Exercice,
     }
     
     private func nextCallback(exercice: Exercice) -> ([Repetition]) -> Void {
-        // [weak self] = When Flow is kill we don't want to call routeNext(exercice: String)
+        // [weak self] = When Flow is killed we don't want to call routeNext(exercice: String)
         return { [weak self] in self?.routeNext(exercice, $0)
             print("repetition : \($0)")
         }
