@@ -127,9 +127,9 @@ class FlowTests: XCTestCase {
 
         var setCallBack: ([Int]) -> Void = { _ in }
         
-        func routeToExercice(exercice: String, setCallback: @escaping ([Int]) -> Void) {
+        func routeToExercice(exercice: String, serieCallback: @escaping ([Int]) -> Void) {
             routedExercices.append(exercice)
-            self.setCallBack = setCallback
+            self.setCallBack = serieCallback
         }
         
         func routeToResult(result: [String : [Int]]) {

@@ -10,7 +10,7 @@ import Foundation
 protocol Router {
     associatedtype Exercice: Hashable
     associatedtype Repetition
-    func routeToExercice(exercice: Exercice, setCallback: @escaping ([Repetition]) -> Void)
+    func routeToExercice(exercice: Exercice, serieCallback: @escaping ([Repetition]) -> Void)
     
     func routeToResult(result: [Exercice: [Repetition]])
 }
@@ -29,7 +29,7 @@ final class Flow <Exercice, Repetition, R: Router> where R.Exercice == Exercice,
     func start() {
         if let firstExercice = exercices.first {
             router.routeToExercice(exercice: firstExercice,
-                                   setCallback: nextCallback(exercice: firstExercice))
+                                   serieCallback: nextCallback(exercice: firstExercice))
         } else {
             // Empty dictionary
             router.routeToResult(result: result)
@@ -51,7 +51,7 @@ final class Flow <Exercice, Repetition, R: Router> where R.Exercice == Exercice,
             if nextExerciceIndex < self.exercices.count {
                 // go to next exercice
                 let nextExercice = exercices[nextExerciceIndex]
-                router.routeToExercice(exercice: nextExercice, setCallback: nextCallback(exercice: nextExercice))
+                router.routeToExercice(exercice: nextExercice, serieCallback: nextCallback(exercice: nextExercice))
 //            If it was the last exercice
             } else {
                 router.routeToResult(result: result)

@@ -5,9 +5,8 @@
 //  Created by Lau on 02/04/2021.
 //
 
-import XCTest
-import AVKit
 
+import XCTest
 @testable import ProteoEngine
 
 class SoundUseCaseTests: XCTestCase {

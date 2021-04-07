@@ -8,7 +8,7 @@
 import XCTest
 @testable import ProteoEngine
 
-class ExerciceUseCaseTests: XCTestCase {
+class ExerciceFlowTests: XCTestCase {
     
     func test_start_withZeroSerie_doesNotDisplaySerie() {
         makeSUT(nbOfSeries: 0).start()
@@ -75,7 +75,7 @@ class ExerciceUseCaseTests: XCTestCase {
     }
     
     func test_start_withOneSerieAndDeallocateSUTBeforeFinishRep_DoesNotPrepareNextExercice() {
-        var sut: ExerciceUseCase? = makeSUT(nbOfSeries: 2)
+        var sut: ExerciceFlow? = makeSUT(nbOfSeries: 2)
         
         sut?.start()
         
@@ -105,7 +105,7 @@ class ExerciceUseCaseTests: XCTestCase {
     }
     
     
-    class OutputSpy: ExerciceUseCaseOutput {
+    class OutputSpy: ExerciceFlowOutput {
         private(set) var serieRemainder: Int?
         private(set) var result: [Int]?
         var serieCallback: ((Int) -> Void) = { _ in}
@@ -124,7 +124,7 @@ class ExerciceUseCaseTests: XCTestCase {
     
     let output = OutputSpy()
     
-    private func makeSUT(nbOfSeries: Int) -> ExerciceUseCase {
-        return ExerciceUseCase(output: output, nbOfSeries: nbOfSeries)
+    private func makeSUT(nbOfSeries: Int) -> ExerciceFlow {
+        return ExerciceFlow(output: output, nbOfSeries: nbOfSeries)
     }
 }

@@ -7,18 +7,18 @@
 
 import Foundation
 
-protocol ExerciceUseCaseOutput {
+protocol ExerciceFlowOutput {
     func displaySerie(remainder: Int, serieCallback: @escaping (Int) -> Void)
     func exerciceFinished(series: [Int])
 }
 
-final class ExerciceUseCase {
+final class ExerciceFlow {
     
-    private let output: ExerciceUseCaseOutput
+    private let output: ExerciceFlowOutput
     private let nbOfSeries: Int
     private var series = [Int]()
     
-    init(output: ExerciceUseCaseOutput, nbOfSeries: Int) {
+    init(output: ExerciceFlowOutput, nbOfSeries: Int) {
         self.output = output
         self.nbOfSeries = nbOfSeries
     }
