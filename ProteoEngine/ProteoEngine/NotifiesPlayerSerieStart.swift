@@ -29,6 +29,7 @@ class NotifiesPlayerSerieStart {
         }
         if time == 0 {
             startPlayer.play()
+            
         }
     }
 }

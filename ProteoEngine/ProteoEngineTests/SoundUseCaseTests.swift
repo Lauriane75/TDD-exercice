@@ -38,6 +38,14 @@ class SoundUseCaseTests: XCTestCase {
         XCTAssertEqual(startPlayer.playCallCount, 1)
     }
     
+    func test_playAboveZeroSecond_doesnottriggerStartPlayer() {
+        let sut = makeSUT()
+        
+        sut.play(time: 1)
+        
+        XCTAssertEqual(startPlayer.playCallCount, 0)
+    }
+    
     // MARK: - Helpers
     
     class PrepareTrackPlayer: TrackPlayer {
