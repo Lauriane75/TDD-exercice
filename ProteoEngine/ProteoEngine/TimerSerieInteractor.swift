@@ -13,9 +13,9 @@ protocol TimerDelegate {
     func tick(callback: @escaping () -> Void)
 }
 
-class TimerSerieInteractor {
+final class TimerSerieInteractor {
     
-    let timerDelegate: TimerDelegate
+    private let timerDelegate: TimerDelegate
     private var restTime: Int
     
     init(timer: TimerDelegate) {
