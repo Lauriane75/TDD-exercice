@@ -1,5 +1,5 @@
 //
-//  NotifiesPlayerSetStart.swift
+//  SerieSoundInterractor.swift
 //  ProteoEngineTests
 //
 //  Created by Lau on 02/04/2021.
@@ -12,7 +12,7 @@ protocol PlayerDelegate {
     func play()
 }
 
-final class PlayerSerieStart {
+final class SerieSoundInterractor {
     
     private let prepareSetPlayer: PlayerDelegate
     private let startSetPlayer: PlayerDelegate

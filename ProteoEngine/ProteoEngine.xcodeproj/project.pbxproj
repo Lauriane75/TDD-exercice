@@ -7,15 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		460258CC260D3013000DF81E /* FlowTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 460258CB260D3013000DF81E /* FlowTests.swift */; };
+		460258CC260D3013000DF81E /* WorkoutFlowTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 460258CB260D3013000DF81E /* WorkoutFlowTests.swift */; };
 		46287F28260C772D00F3D7EB /* ProteoEngine.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46287F1E260C772D00F3D7EB /* ProteoEngine.framework */; };
 		46C961C2260F3DC70073DB81 /* ExerciceFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46C961C1260F3DC70073DB81 /* ExerciceFlow.swift */; };
 		46FD6613260D3CFF0028233B /* WorkoutFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46FD6612260D3CFF0028233B /* WorkoutFlow.swift */; };
-		5B5E8AE02617629F003801D0 /* PlayerSerieStart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B5E8ADC2617625D003801D0 /* PlayerSerieStart.swift */; };
+		5B5E8AE02617629F003801D0 /* SerieSoundInterractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B5E8ADC2617625D003801D0 /* SerieSoundInterractor.swift */; };
 		5B759540261763AD00E6028D /* ExerciceFlowTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46C961BA260F31B40073DB81 /* ExerciceFlowTests.swift */; };
-		5B759545261763B100E6028D /* SoundUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B5E8AE5261762B5003801D0 /* SoundUseCaseTests.swift */; };
+		5B759545261763B100E6028D /* SerieSoundInterractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B5E8AE5261762B5003801D0 /* SerieSoundInterractorTests.swift */; };
 		5B949BDA261DE98E00398ACC /* SerieTimerInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B949BD9261DE98E00398ACC /* SerieTimerInteractorTests.swift */; };
-		5B949BE1261DEB9F00398ACC /* TimerSerieInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B949BDD261DEB3400398ACC /* TimerSerieInteractor.swift */; };
+		5B949BE1261DEB9F00398ACC /* SerieTimeInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B949BDD261DEB3400398ACC /* SerieTimeInteractor.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,7 +29,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		460258CB260D3013000DF81E /* FlowTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowTests.swift; sourceTree = "<group>"; };
+		460258CB260D3013000DF81E /* WorkoutFlowTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutFlowTests.swift; sourceTree = "<group>"; };
 		46287F1E260C772D00F3D7EB /* ProteoEngine.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ProteoEngine.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		46287F22260C772D00F3D7EB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		46287F27260C772D00F3D7EB /* ProteoEngineTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ProteoEngineTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -37,10 +37,10 @@
 		46C961BA260F31B40073DB81 /* ExerciceFlowTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciceFlowTests.swift; sourceTree = "<group>"; };
 		46C961C1260F3DC70073DB81 /* ExerciceFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciceFlow.swift; sourceTree = "<group>"; };
 		46FD6612260D3CFF0028233B /* WorkoutFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutFlow.swift; sourceTree = "<group>"; };
-		5B5E8ADC2617625D003801D0 /* PlayerSerieStart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerSerieStart.swift; sourceTree = "<group>"; };
-		5B5E8AE5261762B5003801D0 /* SoundUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundUseCaseTests.swift; sourceTree = "<group>"; };
+		5B5E8ADC2617625D003801D0 /* SerieSoundInterractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SerieSoundInterractor.swift; sourceTree = "<group>"; };
+		5B5E8AE5261762B5003801D0 /* SerieSoundInterractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SerieSoundInterractorTests.swift; sourceTree = "<group>"; };
 		5B949BD9261DE98E00398ACC /* SerieTimerInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SerieTimerInteractorTests.swift; sourceTree = "<group>"; };
-		5B949BDD261DEB3400398ACC /* TimerSerieInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerSerieInteractor.swift; sourceTree = "<group>"; };
+		5B949BDD261DEB3400398ACC /* SerieTimeInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SerieTimeInteractor.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,8 +86,8 @@
 				46287F22260C772D00F3D7EB /* Info.plist */,
 				46FD6612260D3CFF0028233B /* WorkoutFlow.swift */,
 				46C961C1260F3DC70073DB81 /* ExerciceFlow.swift */,
-				5B5E8ADC2617625D003801D0 /* PlayerSerieStart.swift */,
-				5B949BDD261DEB3400398ACC /* TimerSerieInteractor.swift */,
+				5B5E8ADC2617625D003801D0 /* SerieSoundInterractor.swift */,
+				5B949BDD261DEB3400398ACC /* SerieTimeInteractor.swift */,
 			);
 			path = ProteoEngine;
 			sourceTree = "<group>";
@@ -96,9 +96,9 @@
 			isa = PBXGroup;
 			children = (
 				46287F2E260C772D00F3D7EB /* Info.plist */,
-				460258CB260D3013000DF81E /* FlowTests.swift */,
+				460258CB260D3013000DF81E /* WorkoutFlowTests.swift */,
 				46C961BA260F31B40073DB81 /* ExerciceFlowTests.swift */,
-				5B5E8AE5261762B5003801D0 /* SoundUseCaseTests.swift */,
+				5B5E8AE5261762B5003801D0 /* SerieSoundInterractorTests.swift */,
 				5B949BD9261DE98E00398ACC /* SerieTimerInteractorTests.swift */,
 			);
 			path = ProteoEngineTests;
@@ -214,9 +214,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				46C961C2260F3DC70073DB81 /* ExerciceFlow.swift in Sources */,
-				5B949BE1261DEB9F00398ACC /* TimerSerieInteractor.swift in Sources */,
+				5B949BE1261DEB9F00398ACC /* SerieTimeInteractor.swift in Sources */,
 				46FD6613260D3CFF0028233B /* WorkoutFlow.swift in Sources */,
-				5B5E8AE02617629F003801D0 /* PlayerSerieStart.swift in Sources */,
+				5B5E8AE02617629F003801D0 /* SerieSoundInterractor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -224,10 +224,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5B759545261763B100E6028D /* SoundUseCaseTests.swift in Sources */,
+				5B759545261763B100E6028D /* SerieSoundInterractorTests.swift in Sources */,
 				5B949BDA261DE98E00398ACC /* SerieTimerInteractorTests.swift in Sources */,
 				5B759540261763AD00E6028D /* ExerciceFlowTests.swift in Sources */,
-				460258CC260D3013000DF81E /* FlowTests.swift in Sources */,
+				460258CC260D3013000DF81E /* WorkoutFlowTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

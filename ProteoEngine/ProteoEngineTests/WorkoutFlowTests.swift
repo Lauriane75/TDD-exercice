@@ -1,5 +1,5 @@
 //
-//  FlowTests.swift
+//  WorkoutFlowTests.swift
 //  ProteoEngineTests
 //
 //  Created by Christophe Bugnon on 25/03/2021.
@@ -8,7 +8,7 @@
 import XCTest
 @testable import ProteoEngine
 
-class FlowTests: XCTestCase {
+class WorkoutFlowTests: XCTestCase {
         
     func test_start_withoutExercice_doesNotRouteExercice() {
         

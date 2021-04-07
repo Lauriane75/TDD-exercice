@@ -1,5 +1,5 @@
 //
-//  TimerSerieInteractor.swift
+//  SerieTimeInteractor.swift
 //  ProteoEngineTests
 //
 //  Created by Lau on 07/04/2021.
@@ -13,7 +13,7 @@ protocol TimerDelegate {
     func tick(callback: @escaping () -> Void)
 }
 
-final class TimerSerieInteractor {
+final class SerieTimeInteractor {
     
     private let timerDelegate: TimerDelegate
     private var restTime: Int

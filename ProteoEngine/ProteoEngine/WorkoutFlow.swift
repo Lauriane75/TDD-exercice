@@ -1,5 +1,5 @@
 //
-//  Flow.swift
+//  WorkoutFlow.swift
 //  ProteoEngine
 //
 //  Created by Christophe Bugnon on 25/03/2021.

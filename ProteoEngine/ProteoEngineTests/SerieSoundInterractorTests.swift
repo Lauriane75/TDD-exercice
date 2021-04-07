@@ -1,5 +1,5 @@
 //
-//  SoundUseCaseTests.swift
+//  SerieSoundInterractorTests.swift
 //  ProteoEngineTests
 //
 //  Created by Lau on 02/04/2021.
@@ -9,7 +9,7 @@
 import XCTest
 @testable import ProteoEngine
 
-class SoundUseCaseTests: XCTestCase {
+class SerieSoundInterractorTests: XCTestCase {
     
     func test_aboveFiveSeconds_doesNotTriggerPreparePlayer() {
         let sut = makeSUT()
@@ -66,8 +66,8 @@ class SoundUseCaseTests: XCTestCase {
     let preparePlayer = PrepareTrackPlayerSpy()
     let startPlayer = StartTrackPlayerSpy()
 
-    private func makeSUT() -> PlayerSerieStart {
-        return PlayerSerieStart(preparePlayer: preparePlayer, startPlayer: startPlayer)
+    private func makeSUT() -> SerieSoundInterractor {
+        return SerieSoundInterractor(preparePlayer: preparePlayer, startPlayer: startPlayer)
     }
     
 }

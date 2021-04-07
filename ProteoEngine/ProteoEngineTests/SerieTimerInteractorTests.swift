@@ -1,5 +1,5 @@
 //
-//  SerieTimerInteractorTests.swift
+//  TimerSerieInteractorTests.swift
 //  ProteoEngineTests
 //
 //  Created by Lau on 07/04/2021.
@@ -11,7 +11,7 @@ import XCTest
 class TimerSerieInteractorTests: XCTestCase {
 
     func test_init_doesNotNotifiesDelegateToStart() {
-        let _ = TimerSerieInteractor(timer: timerSpy)
+        let _ = SerieTimeInteractor(timer: timerSpy)
         
         XCTAssertEqual(timerSpy.startCallCount, 0)
     }
@@ -54,7 +54,7 @@ class TimerSerieInteractorTests: XCTestCase {
     }
     
     func test_start_andDeallocatedSUT_doesNotDecreaseRestTime() {
-        var sut: TimerSerieInteractor? = makeSUT()
+        var sut: SerieTimeInteractor? = makeSUT()
         var timerRests: [Int] = []
 
         sut?.start(restTime: 3) { timerRests.append($0) }
@@ -70,8 +70,8 @@ class TimerSerieInteractorTests: XCTestCase {
     
     let timerSpy = TimerSpy()
     
-    private func makeSUT() -> TimerSerieInteractor {
-        return TimerSerieInteractor(timer: timerSpy)
+    private func makeSUT() -> SerieTimeInteractor {
+        return SerieTimeInteractor(timer: timerSpy)
     }
 
     class TimerSpy: TimerDelegate {
