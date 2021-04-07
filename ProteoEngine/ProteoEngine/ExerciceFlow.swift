@@ -7,27 +7,27 @@
 
 import Foundation
 
-protocol ExerciceFlowOutput {
+protocol ExerciceFlowDelegate {
     func displaySerie(remainder: Int, serieCallback: @escaping (Int) -> Void)
     func exerciceFinished(series: [Int])
 }
 
 final class ExerciceFlow {
     
-    private let output: ExerciceFlowOutput
+    private let exerciceFlowDelegate: ExerciceFlowDelegate
     private let nbOfSeries: Int
     private var series = [Int]()
     
-    init(output: ExerciceFlowOutput, nbOfSeries: Int) {
-        self.output = output
+    init(output: ExerciceFlowDelegate, nbOfSeries: Int) {
+        self.exerciceFlowDelegate = output
         self.nbOfSeries = nbOfSeries
     }
     
     func start() {
         if nbOfSeries > 0 {
-            output.displaySerie(remainder: nbOfSeries, serieCallback: nextCallback(nbOfSeries))
+            exerciceFlowDelegate.displaySerie(remainder: nbOfSeries, serieCallback: nextCallback(nbOfSeries))
         } else {
-            output.exerciceFinished(series: series)
+            exerciceFlowDelegate.exerciceFinished(series: series)
         }
     }
     
@@ -41,9 +41,9 @@ final class ExerciceFlow {
         series.append(repetition)
         let nextSerieRemainder = currentRemainder - 1
         if nextSerieRemainder > 0 {
-            output.displaySerie(remainder: nextSerieRemainder, serieCallback: nextCallback(nextSerieRemainder))
+            exerciceFlowDelegate.displaySerie(remainder: nextSerieRemainder, serieCallback: nextCallback(nextSerieRemainder))
         } else {
-            output.exerciceFinished(series: series)
+            exerciceFlowDelegate.exerciceFinished(series: series)
         }
     }
     

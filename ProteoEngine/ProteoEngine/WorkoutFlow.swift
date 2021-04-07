@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol Router {
+protocol RouterDelegate {
     associatedtype Exercice: Hashable
     associatedtype Repetition
     func routeToExercice(exercice: Exercice, serieCallback: @escaping ([Repetition]) -> Void)
@@ -15,7 +15,7 @@ protocol Router {
     func routeToResult(result: [Exercice: [Repetition]])
 }
 
-final class Flow <Exercice, Repetition, R: Router> where R.Exercice == Exercice, R.Repetition == Repetition {
+final class WorkoutFlow <Exercice, Repetition, R: RouterDelegate> where R.Exercice == Exercice, R.Repetition == Repetition {
     
     private let exercices: [Exercice]
     private var result: [Exercice: [Repetition]] = [:]

@@ -61,7 +61,7 @@ class FlowTests: XCTestCase {
     
     func test_start_withTwoExercicesAndFinishedFirstExerciceAndDeallocateSUT_DoesNotRouteToNextExercice() {
         
-        var sut: Flow? = makeSUT(exercices:  ["E1", "E2"])
+        var sut: WorkoutFlow? = makeSUT(exercices:  ["E1", "E2"])
         
         sut?.start()
         sut = nil
@@ -120,7 +120,15 @@ class FlowTests: XCTestCase {
         XCTAssertNil(router.routedResult)
     }
     
-    class RouterSpy: Router {
+    // MARK: - Helpers
+    
+    let router = RouterSpy()
+    
+    private func makeSUT(exercices: [String] = []) -> WorkoutFlow<String, Int, RouterSpy> {
+        return WorkoutFlow(exercices: exercices, router: router)
+    }
+    
+    class RouterSpy: RouterDelegate {
         
         private(set) var routedExercices = [String]()
         private(set) var routedResult: [String: [Int]]?
@@ -136,15 +144,6 @@ class FlowTests: XCTestCase {
             routedResult = result
         }
     }
-    
-    // MARK: - Helpers
-    
-    let router = RouterSpy()
-    
-    private func makeSUT(exercices: [String] = []) -> Flow<String, Int, RouterSpy> {
-        return Flow(exercices: exercices, router: router)
-    }
-    
 }
 
 

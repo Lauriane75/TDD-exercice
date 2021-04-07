@@ -8,17 +8,16 @@
 import Foundation
 import AVKit
 
-
-protocol Player {
+protocol PlayerDelegate {
     func play()
 }
 
-final class NotifiesPlayerSerieStart {
+final class PlayerSerieStart {
     
-    private let prepareSetPlayer: Player
-    private let startSetPlayer: Player
+    private let prepareSetPlayer: PlayerDelegate
+    private let startSetPlayer: PlayerDelegate
     
-    init(preparePlayer: Player, startPlayer: Player) {
+    init(preparePlayer: PlayerDelegate, startPlayer: PlayerDelegate) {
         self.prepareSetPlayer = preparePlayer
         self.startSetPlayer = startPlayer
     }

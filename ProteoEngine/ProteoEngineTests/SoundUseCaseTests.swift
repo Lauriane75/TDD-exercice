@@ -47,7 +47,7 @@ class SoundUseCaseTests: XCTestCase {
     
     // MARK: - Helpers
     
-    class PrepareTrackPlayer: Player {
+    class PrepareTrackPlayerSpy: PlayerDelegate {
         var playCallCount = 0
         
         func play() {
@@ -55,7 +55,7 @@ class SoundUseCaseTests: XCTestCase {
         }
     }
     
-    class StartTrackPlayer: Player {
+    class StartTrackPlayerSpy: PlayerDelegate {
         var playCallCount = 0
         
         func play() {
@@ -63,11 +63,11 @@ class SoundUseCaseTests: XCTestCase {
         }
     }
     
-    let preparePlayer = PrepareTrackPlayer()
-    let startPlayer = StartTrackPlayer()
+    let preparePlayer = PrepareTrackPlayerSpy()
+    let startPlayer = StartTrackPlayerSpy()
 
-    private func makeSUT() -> NotifiesPlayerSerieStart {
-        return NotifiesPlayerSerieStart(preparePlayer: preparePlayer, startPlayer: startPlayer)
+    private func makeSUT() -> PlayerSerieStart {
+        return PlayerSerieStart(preparePlayer: preparePlayer, startPlayer: startPlayer)
     }
     
 }

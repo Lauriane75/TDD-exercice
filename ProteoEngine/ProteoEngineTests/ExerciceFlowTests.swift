@@ -104,8 +104,15 @@ class ExerciceFlowTests: XCTestCase {
         XCTAssertNil(output.result)
     }
     
+    // MARK: - Helpers
     
-    class OutputSpy: ExerciceFlowOutput {
+    let output = ExerciceFlowSpy()
+    
+    private func makeSUT(nbOfSeries: Int) -> ExerciceFlow {
+        return ExerciceFlow(output: output, nbOfSeries: nbOfSeries)
+    }
+    
+    class ExerciceFlowSpy: ExerciceFlowDelegate {
         private(set) var serieRemainder: Int?
         private(set) var result: [Int]?
         var serieCallback: ((Int) -> Void) = { _ in}
@@ -118,13 +125,5 @@ class ExerciceFlowTests: XCTestCase {
         func exerciceFinished(series: [Int]) {
             self.result = series
         }
-    }
-    
-    // MARK: - Helpers
-    
-    let output = OutputSpy()
-    
-    private func makeSUT(nbOfSeries: Int) -> ExerciceFlow {
-        return ExerciceFlow(output: output, nbOfSeries: nbOfSeries)
     }
 }
