@@ -6,13 +6,24 @@
 //
 
 import Foundation
+import AVKit
+
 
 protocol TrackPlayer {
     func play()
 }
 
 class NotifiesPlayerSerieStart {
-    func play() {
-        
+    
+    let preparePlayer: TrackPlayer
+    
+    init(preparePlayer: TrackPlayer) {
+        self.preparePlayer = preparePlayer
+    }
+    
+    func play(time: Int) {
+        if time <= 5 {
+            preparePlayer.play()
+        }
     }
 }
