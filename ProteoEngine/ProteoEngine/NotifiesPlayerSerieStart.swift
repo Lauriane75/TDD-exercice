@@ -16,14 +16,19 @@ protocol TrackPlayer {
 class NotifiesPlayerSerieStart {
     
     let preparePlayer: TrackPlayer
+    let startPlayer: TrackPlayer
     
-    init(preparePlayer: TrackPlayer) {
+    init(preparePlayer: TrackPlayer, startPlayer: TrackPlayer) {
         self.preparePlayer = preparePlayer
+        self.startPlayer = startPlayer
     }
     
     func play(time: Int) {
-        if time <= 5 {
+        if time >= 1 && time <= 5 {
             preparePlayer.play()
+        }
+        if time == 0 {
+            startPlayer.play()
         }
     }
 }

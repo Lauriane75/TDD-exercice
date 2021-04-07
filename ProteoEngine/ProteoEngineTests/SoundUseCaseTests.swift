@@ -13,22 +13,32 @@ import AVKit
 class SoundUseCaseTests: XCTestCase {
     
     func test_aboveFiveSeconds_doesNotTriggerPreparePlayer() {
-        let player = PrepareTrackPlayer()
-        let sut = NotifiesPlayerSerieStart(preparePlayer: player)
-        
+        let sut = makeSUT()
+
         sut.play(time: 6)
         
-        XCTAssertEqual(player.playCallCount, 0)
+        XCTAssertEqual(preparePlayer.playCallCount, 0)
     }
     
-    func test_belowFiveSeconds_triggerPreparePlayer() {
-        let player = PrepareTrackPlayer()
-        let sut = NotifiesPlayerSerieStart(preparePlayer: player)
+    func test_atFiveSeconds_triggerPreparePlayer() {
+        let sut = makeSUT()
         
+        sut.play(time: 5)
         sut.play(time: 4)
         
-        XCTAssertEqual(player.playCallCount, 1)
+        XCTAssertEqual(preparePlayer.playCallCount, 2)
     }
+    
+    func test_atZeroSecond_triggerStartPlayer() {
+        let sut = makeSUT()
+        
+        sut.play(time: 0)
+        
+        XCTAssertEqual(preparePlayer.playCallCount, 0)
+        XCTAssertEqual(startPlayer.playCallCount, 1)
+    }
+    
+    // MARK: - Helpers
     
     class PrepareTrackPlayer: TrackPlayer {
         var playCallCount = 0
@@ -36,6 +46,21 @@ class SoundUseCaseTests: XCTestCase {
         func play() {
             playCallCount += 1
         }
+    }
+    
+    class StartTrackPlayer: TrackPlayer {
+        var playCallCount = 0
+        
+        func play() {
+            playCallCount += 1
+        }
+    }
+    
+    let preparePlayer = PrepareTrackPlayer()
+    let startPlayer = StartTrackPlayer()
+
+    private func makeSUT() -> NotifiesPlayerSerieStart {
+        return NotifiesPlayerSerieStart(preparePlayer: preparePlayer, startPlayer: startPlayer)
     }
     
 }
