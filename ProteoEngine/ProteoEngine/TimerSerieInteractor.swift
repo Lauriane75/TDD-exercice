@@ -29,14 +29,14 @@ class TimerSerieInteractor {
         
         timerDelegate.start()
         
-        timerDelegate.tick { [weak self] in
-            guard let self = self else { return }
-            self.restTime -= 1
-            callback(self.restTime)
-            
-            if self.restTime == 0 {
-                self.timerDelegate.stop()
-            }
+        timerDelegate.tick { [weak self] in self?.tick(callback) }
+    }
+    
+    private func tick(_ callback: @escaping (Int) -> Void) {
+        restTime -= 1
+        callback(restTime)
+        if restTime == 0 {
+            timerDelegate.stop()
         }
     }
     
